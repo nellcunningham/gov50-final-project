@@ -11,4 +11,4 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to sports, most likely with a focus on Formula 1 or motorsports in general. 
+I am interested in exploring data related to sports, most likely with a focus on Formula 1 or motorsports in general. I am extremely interested in focusing on success rates of various drivers and teams throughout history, although I'd also be interested in potentially focusing on the monetary side of the industry. 
