@@ -15,7 +15,7 @@ I am interested in exploring data related to sports, most likely with a focus on
 
 ```{r}
 library(tidyverse)
-latest_RAPTOR_by_player
+players <- latest_RAPTOR_by_player
 ```
 
 
