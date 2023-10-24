@@ -26,7 +26,7 @@ How does position affect productivity? In looking at NBA player performance in t
 ```{r}
 position_spread <- players |>
   ggplot(mapping = aes(x = position)) +
-  geom_bar() +
+  geom_bar(fill = "steelblue1") +
   labs(x = "Player Position", y = "Count")
 position_spread
 ```
