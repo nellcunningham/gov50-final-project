@@ -15,6 +15,7 @@ I am interested in exploring data related to sports, most likely with a focus on
 
 ```{r}
 library(tidyverse)
+read_csv("data/latest_RAPTOR_by_player_edited.csv")
 players <- latest_RAPTOR_by_player
 ```
 
@@ -22,4 +23,5 @@ players <- latest_RAPTOR_by_player
 ## Project proposal
 
 How does position affect productivity? In looking at NBA player performance in the 2022-2023 season based on point contribution, can any patterns be observed between specific player positions and overall measurable success or lack thereof? I hypothesize that, on average, forwards and point guards will receive higher overall ratings and that centers and shooting guards will generally receive lower ratings. Since the turn of the century, only six times has a regular season MVP been a center, and only once has an MVP been a shooting guard. The other 17 MVPs have all been point guards or forwards. Oftentimes, measures of greatness in sports require tangible, statistical evidence to be supported. Because of this, it seems likely that those who have been deemed greatest or most valuable must have strong personal stats. Therefore, exclusively on the basis of measurable performance, it follows that the positions with the most appearances on the list of MVP award recipients in recent years should have a direct correlation with overall performance measurement by way of overall point contribution per possession. In this project, the explanatory variable of interest would be player position, which is less of a measurable variable and more of a categorical variable which divides the data entries (all 2023 NBA players) into five categories based on position. My outcome variable of interest is points contributed per 100 possessions calculated for each entry (player). In the data set that I am using, this variable is measured in nine different ways which differ in their attention to variations such as offensive versus defensive productivity as well as isolated personal productivity versus personal productivity taking into consideration other players on and off the court and other confounding factors. Given the offensive, defensive, individual, and team-oriented roles that various positions play on the basketball court, these multiple breakdowns of the same outcome variable would be very interesting to observe and integrate into eventual findings and conclusions. In looking at the outcome variables, evidence that would support my hypothesis would be point guards and forwards outscoring shooting guards and centers, on average, in the points per 100 possessions variable. Conversely, evidence that would disprove my hypothesis would be shooting guards and centers generally outscoring point guards and forwards in the same variable.  
+
 
