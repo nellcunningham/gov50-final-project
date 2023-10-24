@@ -15,8 +15,7 @@ I am interested in exploring data related to sports, most likely with a focus on
 
 ```{r}
 library(tidyverse)
-read_csv("data/latest_RAPTOR_by_player_edited.csv")
-players <- latest_RAPTOR_by_player
+players <- read_csv("player_data - Sheet2.csv")
 ```
 
 
