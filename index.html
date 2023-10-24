@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","latest_RAPTOR_by_player.csv"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","latest_RAPTOR_by_player_edited.csv","latest_RAPTOR_by_player_edited.numbers","latest_RAPTOR_by_player.csv","player_data - Sheet2.csv","players_data - Sheet2.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1521,7 +1521,44 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <p>I am interested in exploring data related to sports, most likely with a focus on Formula 1 or motorsports in general. I am extremely interested in focusing on success rates of various drivers and teams throughout history, although I’d also be interested in potentially focusing on the monetary side of the industry.</p>
 <h2 id="project-proposal">Project proposal</h2>
 <p>How does position affect productivity? In looking at NBA player performance in the 2022-2023 season based on point contribution, can any patterns be observed between specific player positions and overall measurable success or lack thereof? I hypothesize that, on average, forwards and point guards will receive higher overall ratings and that centers and shooting guards will generally receive lower ratings. Since the turn of the century, only six times has a regular season MVP been a center, and only once has an MVP been a shooting guard. The other 17 MVPs have all been point guards or forwards. Oftentimes, measures of greatness in sports require tangible, statistical evidence to be supported. Because of this, it seems likely that those who have been deemed greatest or most valuable must have strong personal stats. Therefore, exclusively on the basis of measurable performance, it follows that the positions with the most appearances on the list of MVP award recipients in recent years should have a direct correlation with overall performance measurement by way of overall point contribution per possession. In this project, the explanatory variable of interest would be player position, which is less of a measurable variable and more of a categorical variable which divides the data entries (all 2023 NBA players) into five categories based on position. My outcome variable of interest is points contributed per 100 possessions calculated for each entry (player). In the data set that I am using, this variable is measured in nine different ways which differ in their attention to variations such as offensive versus defensive productivity as well as isolated personal productivity versus personal productivity taking into consideration other players on and off the court and other confounding factors. Given the offensive, defensive, individual, and team-oriented roles that various positions play on the basketball court, these multiple breakdowns of the same outcome variable would be very interesting to observe and integrate into eventual findings and conclusions. In looking at the outcome variables, evidence that would support my hypothesis would be point guards and forwards outscoring shooting guards and centers, on average, in the points per 100 possessions variable. Conversely, evidence that would disprove my hypothesis would be shooting guards and centers generally outscoring point guards and forwards in the same variable.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span></span>
+<span><span class='va'>players</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='st'>"players_data - Sheet2.csv"</span><span class='op'>)</span></span>
+<span><span class='va'>players</span></span></code></pre>
+</div>
+<pre><code># A tibble: 541 × 22
+   player_name              position player_id season  poss    mp
+   &lt;chr&gt;                    &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+ 1 Precious Achiuwa         PF       achiupr01   2023  2328  1140
+ 2 Steven Adams             C        adamsst01   2023  2391  1133
+ 3 Bam Adebayo              C        adebaba01   2023  6933  3448
+ 4 Ochai Agbaji             SG       agbajoc01   2023  2604  1209
+ 5 Santi Aldama             PF       aldamsa01   2023  3824  1783
+ 6 Nickeil Alexander-Walker SG       alexani01   2023  2185  1032
+ 7 Grayson Allen            SG       allengr01   2023  4534  2121
+ 8 Jarrett Allen            C        allenja01   2023  4833  2411
+ 9 Jose Alvarado            PG       alvarjo01   2023  2778  1310
+10 Kyle Anderson            SF       anderky01   2023  4359  2061
+# ℹ 531 more rows
+# ℹ 16 more variables: raptor_box_offense &lt;dbl&gt;,
+#   raptor_box_defense &lt;dbl&gt;, raptor_box_total &lt;dbl&gt;,
+#   raptor_onoff_offense &lt;dbl&gt;, raptor_onoff_defense &lt;dbl&gt;,
+#   raptor_onoff_total &lt;dbl&gt;, raptor_offense &lt;dbl&gt;,
+#   raptor_defense &lt;dbl&gt;, raptor_total &lt;dbl&gt;, war_total &lt;dbl&gt;,
+#   war_reg_season &lt;dbl&gt;, war_playoffs &lt;dbl&gt;, …</code></pre>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>position_spread</span> <span class='op'>&lt;-</span> <span class='va'>players</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>position</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"steelblue1"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Player Position"</span>, y <span class='op'>=</span> <span class='st'>"Count"</span><span class='op'>)</span></span>
+<span><span class='va'>position_spread</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
