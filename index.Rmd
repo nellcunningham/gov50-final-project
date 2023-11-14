@@ -56,6 +56,9 @@ rap_plot <- pos_mean |>
 rap_plot
 ```
 
+```{r}
+knitr::kable(pos_mean, col.names = c("Player Position", "Average Efficiency Score"))
+```
 
 
 
