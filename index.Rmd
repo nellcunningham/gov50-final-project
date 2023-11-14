@@ -32,6 +32,18 @@ position_spread <- players |>
 position_spread
 ```
 
+```{r}
+pos_mean <- players |>
+  filter(raptor_total > 0) |>
+  group_by(position) |>
+  summarize(rap_mean = mean(raptor_total))
+pos_mean
+rap_plot <- pos_mean |>
+  ggplot(mapping = aes(x = position, y = rap_mean)) +
+  geom_col(fill = "coral") +
+  labs(title = "Average Efficiency Score By Player Position", caption = "*only mapping players with a positive efficiency score", x = "Player Position", y = "Average Efficiency Score")
+rap_plot
+```
 
 
 
