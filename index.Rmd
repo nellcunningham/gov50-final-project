@@ -20,7 +20,22 @@ players
 ```
 ## Data
 
+```{r}
+pos_mean <- players |>
+  filter(raptor_total > 0) |>
+  group_by(position) |>
+  summarize(rap_mean = mean(raptor_total))
+rap_plot <- pos_mean |>
+  ggplot(mapping = aes(x = position, y = rap_mean)) +
+  geom_col(fill = "coral") +
+  labs(title = "Average Efficiency Score By Player Position", 
+       caption = "*only mapping players with a positive efficiency score", 
+       x = "Player Position", y = "Average Efficiency Score")
+rap_plot
+```
 For this project, I am using a data set which utilizes FiveThirtyEight's NBA statistic, "RAPTOR", to track points per possession for all 2023 NBA players. RAPTOR stands for "Robust Algorithm (using) Player Tracking (and) On/Off Ratings" and is a metric used to evaluate and quantify player performance. In this project, the explanatory variable of interest is player position, which is less of a measurable variable and more of a categorical variable which divides the data entries (all 2023 NBA players) into five categories based on position. My outcome variable of interest is points contributed per 100 possessions calculated for each entry (player). In the data set that I am using, this variable is measured in nine different ways which differ in their attention to variations such as offensive versus defensive productivity as well as isolated personal productivity versus personal productivity taking into consideration other players on and off the court and other confounding factors. In order to come to the most all-encompassing conclusions, I will be focusing on the `raptor_total` variable, which is essentially a cumulative points per possession rating calculated based on the other more specific variables previously explained. 
+
+The above bar plot maps the average efficiency score of each player position, only taking into account the 196 players with positive overall efficiency scores. Players with negative overall efficiency scores have been excluded from this visualization. 
 
 ## Results 
 
@@ -45,7 +60,6 @@ pos_mean <- players |>
   filter(raptor_total > 0) |>
   group_by(position) |>
   summarize(rap_mean = mean(raptor_total))
-pos_mean
 rap_plot <- pos_mean |>
   ggplot(mapping = aes(x = position, y = rap_mean)) +
   geom_col(fill = "coral") +
@@ -68,7 +82,7 @@ modelsummary::modelsummary(rap_fit,
                            coef_map = var_labels,
                            gof_map = c("nobs", "r.squared", "adj.r.squared"))
 ```
-The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another. 
+The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, is the same as that which is shown in the "Data" section, and maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another. 
 
 Among the top 196 players in the data set (those with a positive overall RAPTOR efficiency score), shooting guards, on average, reported the highest efficiency scores (an average of ~4.76), while small forwards reported the lowest (an average of ~2.28). In order from greatest to smallest, the average efficiency scores of power forwards (~3.08), point guards (~2.68), and centers (~2.40) fell in between the averages of shooting guards and small forwards. Although centers, falling second lowest on average efficiency ratings, do not disprove my hypothesis, the sheer dominance of shooting guards in this comparison strongly counters my hypothesis of shooting guards being outperformed, on average, by forwards and point guards. 
 

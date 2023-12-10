@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","latest_RAPTOR_by_player_edited.csv","latest_RAPTOR_by_player_edited.numbers","latest_RAPTOR_by_player.csv","player_data - Sheet2.csv","players_data - Sheet2.csv"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/unnamed-chunk-2-1.png","index_files/figure-html5/unnamed-chunk-3-1.png","index_files/figure-html5/unnamed-chunk-4-1.png","index_files/figure-html5/unnamed-chunk-5-1.png","index_files/header-attrs-2.17/header-attrs.js","index_files/header-attrs-2.24/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/kePrint-0.0.1/kePrint.js","index_files/lightable-0.0.1/lightable.css","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","latest_RAPTOR_by_player_edited.csv","latest_RAPTOR_by_player_edited.numbers","latest_RAPTOR_by_player.csv","player_data - Sheet2.csv","players_data - Sheet2.csv"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1549,7 +1549,24 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 #   war_reg_season &lt;dbl&gt;, war_playoffs &lt;dbl&gt;, …</code></pre>
 </div>
 <h2 id="data">Data</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>pos_mean</span> <span class='op'>&lt;-</span> <span class='va'>players</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>raptor_total</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>position</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>rap_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>raptor_total</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>rap_plot</span> <span class='op'>&lt;-</span> <span class='va'>pos_mean</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>position</span>, y <span class='op'>=</span> <span class='va'>rap_mean</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"coral"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Average Efficiency Score By Player Position"</span>, </span>
+<span>       caption <span class='op'>=</span> <span class='st'>"*only mapping players with a positive efficiency score"</span>, </span>
+<span>       x <span class='op'>=</span> <span class='st'>"Player Position"</span>, y <span class='op'>=</span> <span class='st'>"Average Efficiency Score"</span><span class='op'>)</span></span>
+<span><span class='va'>rap_plot</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
 <p>For this project, I am using a data set which utilizes FiveThirtyEight’s NBA statistic, “RAPTOR”, to track points per possession for all 2023 NBA players. RAPTOR stands for “Robust Algorithm (using) Player Tracking (and) On/Off Ratings” and is a metric used to evaluate and quantify player performance. In this project, the explanatory variable of interest is player position, which is less of a measurable variable and more of a categorical variable which divides the data entries (all 2023 NBA players) into five categories based on position. My outcome variable of interest is points contributed per 100 possessions calculated for each entry (player). In the data set that I am using, this variable is measured in nine different ways which differ in their attention to variations such as offensive versus defensive productivity as well as isolated personal productivity versus personal productivity taking into consideration other players on and off the court and other confounding factors. In order to come to the most all-encompassing conclusions, I will be focusing on the <code>raptor_total</code> variable, which is essentially a cumulative points per possession rating calculated based on the other more specific variables previously explained.</p>
+<p>The above bar plot maps the average efficiency score of each player position, only taking into account the 196 players with positive overall efficiency scores. Players with negative overall efficiency scores have been excluded from this visualization.</p>
 <h2 id="results">Results</h2>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1559,7 +1576,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Player Position"</span>, y <span class='op'>=</span> <span class='st'>"Count"</span><span class='op'>)</span></span>
 <span><span class='va'>position_spread</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1571,7 +1588,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>       x <span class='op'>=</span> <span class='st'>"Player Position"</span>, y <span class='op'>=</span> <span class='st'>"Count"</span><span class='op'>)</span></span>
 <span><span class='va'>top_position_spread</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-3-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1579,18 +1596,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>raptor_total</span> <span class='op'>&gt;</span> <span class='fl'>0</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>position</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>rap_mean <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>raptor_total</span><span class='op'>)</span><span class='op'>)</span></span>
-<span><span class='va'>pos_mean</span></span></code></pre>
-</div>
-<pre><code># A tibble: 5 × 2
-  position rap_mean
-  &lt;chr&gt;       &lt;dbl&gt;
-1 C            2.40
-2 PF           3.08
-3 PG           2.68
-4 SF           2.28
-5 SG           4.76</code></pre>
-<div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>rap_plot</span> <span class='op'>&lt;-</span> <span class='va'>pos_mean</span> <span class='op'>|&gt;</span></span>
+<span><span class='va'>rap_plot</span> <span class='op'>&lt;-</span> <span class='va'>pos_mean</span> <span class='op'>|&gt;</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>position</span>, y <span class='op'>=</span> <span class='va'>rap_mean</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span>fill <span class='op'>=</span> <span class='st'>"coral"</span><span class='op'>)</span> <span class='op'>+</span></span>
 <span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Average Efficiency Score By Player Position"</span>, </span>
@@ -1598,7 +1604,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <span>       x <span class='op'>=</span> <span class='st'>"Player Position"</span>, y <span class='op'>=</span> <span class='st'>"Average Efficiency Score"</span><span class='op'>)</span></span>
 <span><span class='va'>rap_plot</span></span></code></pre>
 </div>
-<p><img src="index_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
+<p><img src="index_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -1717,10 +1723,10 @@ R2
 </tbody>
 </table>
 </div>
-<p>The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another.</p>
+<p>The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, is the same as that which is shown in the “Data” section, and maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another.</p>
 <p>Among the top 196 players in the data set (those with a positive overall RAPTOR efficiency score), shooting guards, on average, reported the highest efficiency scores (an average of ~4.76), while small forwards reported the lowest (an average of ~2.28). In order from greatest to smallest, the average efficiency scores of power forwards (~3.08), point guards (~2.68), and centers (~2.40) fell in between the averages of shooting guards and small forwards. Although centers, falling second lowest on average efficiency ratings, do not disprove my hypothesis, the sheer dominance of shooting guards in this comparison strongly counters my hypothesis of shooting guards being outperformed, on average, by forwards and point guards.</p>
 <p>The final table demonstrates the difference in means between the five player positions. Again, this table is taking into account only the top 196 players who are reported as having a positive overall efficiency score. In this table, the “Intercept” value of 2.401 represents the average efficiency score for players who are centers. The value of 0.683 in the “Power Forward” row represents the difference in average efficiency score between centers and power forwards, in that power forwards on average have an efficiency score that is 0.683 points higher than that of centers. The value of 0.282 in the “Point Guard” row represents the difference in average efficiency score between centers and point guards, showing that point guards on average have an efficiency score that is 0.282 points higher than that of centers. The value of -0.116 in the “Small Forward” row represents the difference in average efficiency score between centers and small forwards, indicating that small forwards on average have an efficiency score that is 0.116 points lower than that of centers. Finally, the value of 2.361 in the “Shooting Guard” row represents the difference in average efficiency score between centers and shooting guards, demonstrating that shooting guards on average have an efficiency score that is 2.361 points higher than that of centers.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
