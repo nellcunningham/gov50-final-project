@@ -55,7 +55,8 @@ prop <- players |>
   group_by(position) |>
   summarize(n = n()) |>
   mutate(prop = n / sum(n))
-knitr::kable(prop, col.names = c("Player Position", "Count", "Proportion"))
+knitr::kable(prop, col.names = c("Player Position", "Count", "Proportion"), 
+             digits = 2)
 ```
 
 ```{r}
@@ -73,7 +74,8 @@ top_prop <- players |>
   group_by(position) |>
   summarize(n = n()) |>
   mutate(prop = n / sum(n))
-knitr::kable(top_prop, col.names = c("Player Position", "Count", "Proportion"))
+knitr::kable(top_prop, col.names = c("Player Position", "Count", "Proportion"), 
+             digits = 2)
 ```
 
 ```{r}
@@ -90,7 +92,8 @@ rap_plot <- pos_mean |>
 rap_plot
 ```
 ```{r}
-knitr::kable(pos_mean, col.names = c("Player Position", "Average Efficiency Score"))
+knitr::kable(pos_mean, col.names = c("Player Position", 
+                                     "Average Efficiency Score"), digits = 2)
 ```
 ```{r}
 rap_fit <- lm(rap_mean ~ position, data = pos_mean)
