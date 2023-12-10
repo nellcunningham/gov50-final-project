@@ -1473,6 +1473,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   <!--/radix_placeholder_distill-->
   <script src="index_files/header-attrs-2.24/header-attrs.js"></script>
+  <script src="index_files/kePrint-0.0.1/kePrint.js"></script>
+  <link href="index_files/lightable-0.0.1/lightable.css" rel="stylesheet" />
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1629,6 +1631,88 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <tr class="odd">
 <td style="text-align: left;">SG</td>
 <td style="text-align: right;">4.762166</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>rap_fit</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>rap_mean</span> <span class='op'>~</span> <span class='va'>position</span>, data <span class='op'>=</span> <span class='va'>pos_mean</span><span class='op'>)</span></span>
+<span><span class='va'>var_labels</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"(Intercept)"</span> <span class='op'>=</span> <span class='st'>"Intercept"</span>, <span class='st'>"positionPF"</span> <span class='op'>=</span> <span class='st'>"Power Forward"</span>,</span>
+<span>                <span class='st'>"positionPG"</span> <span class='op'>=</span> <span class='st'>"PointGuard"</span>, <span class='st'>"positionSF"</span> <span class='op'>=</span> <span class='st'>"Small Forward"</span>, </span>
+<span>                <span class='st'>"positionSG"</span> <span class='op'>=</span> <span class='st'>"Shooting Guard"</span><span class='op'>)</span></span>
+<span><span class='fu'>modelsummary</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/modelsummary/man/modelsummary.html'>modelsummary</a></span><span class='op'>(</span><span class='va'>rap_fit</span>,</span>
+<span>                           statistic <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"s.e. = {std.error}"</span>,</span>
+<span>                                         <span class='st'>"p = {p.value}"</span><span class='op'>)</span>,</span>
+<span>                           coef_map <span class='op'>=</span> <span class='va'>var_labels</span>,</span>
+<span>                           gof_map <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"nobs"</span>, <span class='st'>"r.squared"</span>, <span class='st'>"adj.r.squared"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:center;">
+ (1)
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Intercept
+</td>
+<td style="text-align:center;">
+2.401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Power Forward
+</td>
+<td style="text-align:center;">
+0.683
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+PointGuard
+</td>
+<td style="text-align:center;">
+0.282
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Small Forward
+</td>
+<td style="text-align:center;">
+−0.116
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1.5px">
+Shooting Guard
+</td>
+<td style="text-align:center;box-shadow: 0px 1.5px">
+2.361
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+5
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+R2
+</td>
+<td style="text-align:center;">
+1.000
+</td>
 </tr>
 </tbody>
 </table>

@@ -63,6 +63,18 @@ rap_plot
 knitr::kable(pos_mean, col.names = c("Player Position", "Average Efficiency Score"))
 ```
 
+```{r}
+rap_fit <- lm(rap_mean ~ position, data = pos_mean)
+var_labels <- c("(Intercept)" = "Intercept", "positionPF" = "Power Forward",
+                "positionPG" = "PointGuard", "positionSF" = "Small Forward", 
+                "positionSG" = "Shooting Guard")
+modelsummary::modelsummary(rap_fit,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           coef_map = var_labels,
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"))
+```
+
 Among the top 196 players in the data set (those with a positive overall RAPTOR efficiency score), shooting guards, on average, reported the highest efficiency scores, while small forwards reported the lowest. In order from greatest to smallest, the average efficiency scores of power forwards, point guards, and centers fell in between the averages of shooting guards and small forwards. Although centers, falling second lowest on average efficiency ratings, do not disprove my hypothesis, the sheer dominance of shooting guards in this comparison strongly counters my hypothesis of shooting guards being outperformed, on average, by forwards and point guards. 
 
 
