@@ -31,6 +31,7 @@ position_spread <- players |>
   labs(x = "Player Position", y = "Count")
 position_spread
 ```
+The above graph represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. 
 ```{r}
 top_position_spread <- players |>
   filter(raptor_total > 0) |>
@@ -40,10 +41,7 @@ top_position_spread <- players |>
        x = "Player Position", y = "Count")
 top_position_spread
 ```
-
-
-
-
+The above graph is the same as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores.
 ```{r}
 pos_mean <- players |>
   filter(raptor_total > 0) |>
