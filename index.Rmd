@@ -57,8 +57,6 @@ rap_plot
 ```{r}
 knitr::kable(pos_mean, col.names = c("Player Position", "Average Efficiency Score"))
 ```
-The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another. 
-Among the top 196 players in the data set (those with a positive overall RAPTOR efficiency score), shooting guards, on average, reported the highest efficiency scores (an average of ~4.76), while small forwards reported the lowest (an average of ~2.28). In order from greatest to smallest, the average efficiency scores of power forwards (~3.08), point guards (~2.68), and centers (~2.40) fell in between the averages of shooting guards and small forwards. Although centers, falling second lowest on average efficiency ratings, do not disprove my hypothesis, the sheer dominance of shooting guards in this comparison strongly counters my hypothesis of shooting guards being outperformed, on average, by forwards and point guards. 
 ```{r}
 rap_fit <- lm(rap_mean ~ position, data = pos_mean)
 var_labels <- c("(Intercept)" = "Intercept", "positionPF" = "Power Forward",
@@ -70,7 +68,9 @@ modelsummary::modelsummary(rap_fit,
                            coef_map = var_labels,
                            gof_map = c("nobs", "r.squared", "adj.r.squared"))
 ```
+The first graph, in blue, represents the spread of player position across all 2023 NBA players. Player position is graphed on the x-axis, and the number of players at each position is mapped on the y-axis. The second graph, in red, is the same format as the first, except that it only maps the players with a positive overall efficiency score, which equates to the 196 players with the highest overall efficiency scores. The third and final graph, in orange, maps the average efficiency score of each player position, only taking into account the aforementioned 196 players with positive overall efficiency scores. The following table reflects the same values as the final bar plot, only in a format where the averages can be easily compared with one another. 
 
+Among the top 196 players in the data set (those with a positive overall RAPTOR efficiency score), shooting guards, on average, reported the highest efficiency scores (an average of ~4.76), while small forwards reported the lowest (an average of ~2.28). In order from greatest to smallest, the average efficiency scores of power forwards (~3.08), point guards (~2.68), and centers (~2.40) fell in between the averages of shooting guards and small forwards. Although centers, falling second lowest on average efficiency ratings, do not disprove my hypothesis, the sheer dominance of shooting guards in this comparison strongly counters my hypothesis of shooting guards being outperformed, on average, by forwards and point guards. 
 
 
 
